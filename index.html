@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taxi Rate Calculator</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function calculateRate() {
+      var startingPrice = document.getElementById('rateCheckbox').checked ? 8.90 : 6.90;
+      var ratePerKm = 1.19;
+      var ratePerMinute = 0.99;
+
+      var kilometers = parseFloat(document.getElementById('kilometers').value);
+      var minutes = parseFloat(document.getElementById('minutes').value);
+
+      var totalRate = startingPrice + (ratePerKm * kilometers) + (ratePerMinute * minutes);
+      document.getElementById('result').textContent = "Total Rate: " + totalRate.toFixed(2) + "€";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Taxi Rate Calculator</h1>
+    <label>
+      <input type="checkbox" id="rateCheckbox"> Pyhä- / yöhinnasto
+    </label>
+    <br><br>
+    <label>Kilometers:</label>
+    <input type="number" id="kilometers" step="0.01">
+    <br><br>
+    <label>Time in minutes:</label>
+    <input type="number" id="minutes" step="1">
+    <br><br>
+    <button onclick="calculateRate()">Calculate</button>
+    <div class="result" id="result"></div>
+  </div>
+</body>
+</html>
